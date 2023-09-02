@@ -33,7 +33,14 @@ struct ContentView: View {
             
             
             Button {
-                answerNumber = answerNumber + 1
+                var newAnswerNumber = 0
+                
+                // 同じ手が続かないようにする
+                repeat {
+                    newAnswerNumber = Int.random(in: 1...3)
+                } while answerNumber == newAnswerNumber
+                
+                answerNumber = newAnswerNumber
             } label: {
                 Text("じゃんけんをする！")
             }
